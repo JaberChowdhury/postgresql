@@ -1,5 +1,3 @@
-# SQL Training API
-
 An industry-grade, blazing-fast REST API built to learn PostgreSQL, structured with modern enterprise patterns.
 
 ## 🚀 Tech Stack
