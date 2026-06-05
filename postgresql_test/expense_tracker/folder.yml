@@ -1,0 +1,7 @@
+info:
+  name: expense_tracker
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

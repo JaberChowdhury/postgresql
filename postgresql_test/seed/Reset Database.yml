@@ -1,0 +1,10 @@
+meta:
+  name: Reset Database
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/seed
+  body: none
+  auth: none

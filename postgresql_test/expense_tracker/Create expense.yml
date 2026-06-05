@@ -1,0 +1,22 @@
+meta:
+  name: Create expense
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:3000/expenses
+  body: json
+  auth: none
+
+body:json:
+  {
+    "date": "2026-06-10",
+    "title": "Bruno Test Expense",
+    "category": "Testing",
+    "account": "Credit",
+    "amount": 10.99,
+    "currency": "USD",
+    "type": "Expense",
+    "description": "Created via Bruno API Tester"
+  }
