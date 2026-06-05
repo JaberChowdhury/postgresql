@@ -1,2 +1,7 @@
 meta:
   name: seed
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
