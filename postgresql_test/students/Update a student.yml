@@ -1,0 +1,22 @@
+info:
+  name: Update a student
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://localhost:3000/students/1
+  body: json
+  auth: inherit
+
+body:json:
+  {
+    "name": "Jane Doe Updated",
+    "roll": "789"
+  }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
