@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>postgresql_test - API Documentation</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            #opencollection-container {
+                width: 100vw;
+                height: 100vh;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdn.opencollection.com/docs.css" />
+        <script src="https://cdn.opencollection.com/docs.js"></script>
+    </head>
+    <body>
+        <div id="opencollection-container"></div>
+        <script>
+            const collectionData =
+                "opencollection: 1.0.0\ninfo:\n  name: postgresql_test\nconfig:\n  proxy:\n    inherit: true\n    config:\n      protocol: http\n      hostname: ''\n      port: ''\n      auth:\n        username: ''\n        password: ''\n      bypassProxy: ''\nitems:\n  - info:\n      name: expense_tracker\n      type: folder\n      seq: 2\n    request:\n      auth: inherit\n    items:\n      - info:\n          name: Get all expense detailes\n          type: http\n          seq: 3\n        http:\n          method: GET\n          url: http://localhost:3000/expenses\n          auth: inherit\n        settings:\n          encodeUrl: true\n          timeout: 0\n          followRedirects: true\n          maxRedirects: 5\n  - info:\n      name: students\n      type: folder\n      seq: 1\n    request:\n      auth: inherit\n    items:\n      - info:\n          name: Delete a student\n          type: http\n          seq: 5\n        http:\n          method: DELETE\n          url: http://localhost:3000/students/1\n          auth: inherit\n        settings:\n          encodeUrl: true\n          timeout: 0\n          followRedirects: true\n          maxRedirects: 5\n      - info:\n          name: Get a student by ID\n          type: http\n          seq: 3\n        http:\n          method: GET\n          url: http://localhost:3000/students/1\n          auth: inherit\n        settings:\n          encodeUrl: true\n          timeout: 0\n          followRedirects: true\n          maxRedirects: 5\n      - info:\n          name: Get all records\n          type: http\n          seq: 1\n        http:\n          method: GET\n          url: http://localhost:3000/students\n          auth: inherit\n        settings:\n          encodeUrl: true\n          timeout: 0\n          followRedirects: true\n          maxRedirects: 5\n      - info:\n          name: Update a student\n          type: http\n          seq: 4\n        http:\n          method: PUT\n          url: http://localhost:3000/students/1\n          auth: inherit\n        settings:\n          encodeUrl: true\n          timeout: 0\n          followRedirects: true\n          maxRedirects: 5\n      - info:\n          name: add a student\n          type: http\n          seq: 2\n        http:\n          method: POST\n          url: http://localhost:3000/students\n          auth: inherit\n        settings:\n          encodeUrl: true\n          timeout: 0\n          followRedirects: true\n          maxRedirects: 5\n  - info:\n      name: seed\n      type: folder\n      seq: 3\n    request:\n      auth: inherit\n    items:\n      - info:\n          name: Reset Database\n          type: http\n          seq: 1\n        http:\n          method: POST\n          url: http://localhost:3000/seed\n        settings:\n          encodeUrl: true\n          timeout: 0\n          followRedirects: true\n          maxRedirects: 5\nbundled: true\nextensions:\n  bruno:\n    ignore:\n      - node_modules\n      - .git\n    exportedAt: '2026-06-06T08:05:35.914Z'\n    exportedUsing: Bruno/3.4.2\n";
+            new window.OpenCollection({
+                target: document.getElementById("opencollection-container"),
+                opencollection: collectionData,
+                theme: "light",
+                gitCollectionUrl:
+                    "https://github.com/JaberChowdhury/postgresql.git",
+            });
+        </script>
+    </body>
+</html>
