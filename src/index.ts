@@ -1,10 +1,10 @@
-import { app } from './app'
-import { initDb } from './db/init'
+import { app } from "./app";
+import { initDb } from "./db/init";
 
 // Initialize database schemas
-initDb().catch(console.error)
+initDb().catch(console.error);
 
 export default {
-  port: 3000,
-  fetch: app.fetch,
-}
+	port: 3000,
+	fetch: app.fetch,
+};

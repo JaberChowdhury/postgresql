@@ -1,18 +1,18 @@
-import { sql } from './index'
+import { sql } from "./index";
 
 export async function initDb() {
-  // Ensure students table exists
-  await sql`
+	// Ensure students table exists
+	await sql`
     CREATE TABLE IF NOT EXISTS students (
       id SERIAL PRIMARY KEY,
       name VARCHAR(100) NOT NULL,
       roll VARCHAR(10) NOT NULL,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
-  `
+  `;
 
-  // Ensure expenses table exists
-  await sql`
+	// Ensure expenses table exists
+	await sql`
     CREATE TABLE IF NOT EXISTS expenses (
       id SERIAL PRIMARY KEY,
       date DATE NOT NULL,
@@ -31,7 +31,7 @@ export async function initDb() {
       due_date DATE,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
-  `
+  `;
 
-  console.log('Database initialized successfully')
+	console.log("Database initialized successfully");
 }

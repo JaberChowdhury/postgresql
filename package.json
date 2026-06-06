@@ -1,25 +1,25 @@
 {
-  "name": "sql-training",
-  "module": "src/index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "dev": "bun run --watch src/index.ts",
-    "start": "bun run dist/index.js",
-    "build": "bun build ./src/index.ts --outdir ./dist --target bun",
-    "format": "bunx --bun @biomejs/biome format --write"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.16",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "@hono/zod-validator": "^0.8.0",
-    "hono": "^4.12.23",
-    "postgres": "^3.4.9",
-    "zod": "^4.4.3"
-  }
+	"name": "sql-training",
+	"module": "src/index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun run --watch src/index.ts",
+		"start": "bun run dist/index.js",
+		"build": "bun build ./src/index.ts --outdir ./dist --target bun",
+		"format": "bunx --bun @biomejs/biome format --write"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.16",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@hono/zod-validator": "^0.8.0",
+		"hono": "^4.12.23",
+		"postgres": "^3.4.9",
+		"zod": "^4.4.3"
+	}
 }

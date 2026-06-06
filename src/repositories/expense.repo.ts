@@ -1,13 +1,13 @@
-import { sql } from '../db/index'
-import { CreateExpenseDto } from '../schemas/expense.schema'
+import { sql } from "../db/index";
+import { CreateExpenseDto } from "../schemas/expense.schema";
 
 export class ExpenseRepository {
-  async findAll() {
-    return sql`SELECT * FROM expenses ORDER BY date DESC, id DESC`
-  }
+	async findAll() {
+		return sql`SELECT * FROM expenses ORDER BY date DESC, id DESC`;
+	}
 
-  async create(data: CreateExpenseDto) {
-    const result = await sql`
+	async create(data: CreateExpenseDto) {
+		const result = await sql`
       INSERT INTO expenses (
         date, title, category, account, amount, currency, type, 
         transfer_amount, transfer_currency, to_account, receive_amount, receive_currency, 
@@ -19,9 +19,9 @@ export class ExpenseRepository {
         ${data.description || null}, ${data.due_date || null}
       )
       RETURNING *
-    `
-    return result[0]
-  }
+    `;
+		return result[0];
+	}
 }
 
-export const expenseRepo = new ExpenseRepository()
+export const expenseRepo = new ExpenseRepository();
