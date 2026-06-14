@@ -1,77 +1,36 @@
-An industry-grade, blazing-fast REST API built to learn PostgreSQL, structured with modern enterprise patterns.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## 🚀 Tech Stack
+## Getting Started
 
-- **Runtime:** [Bun](https://bun.sh/)
-- **Framework:** [Hono](https://hono.dev/)
-- **Database:** PostgreSQL (via `postgres.js`)
-- **Validation:** [Zod](https://zod.dev/)
+First, run the development server:
 
-## 🏗️ Architecture
-
-This project strictly follows the **Controller-Service-Repository** pattern to ensure separation of concerns and maintainability:
-
-- **Routes (Controllers):** `src/routes/` - Handles HTTP requests, HTTP responses, and routing. Uses Zod for strict payload validation.
-- **Services:** `src/services/` - Contains the core business logic. Calls repositories to fetch/save data.
-- **Repositories:** `src/repositories/` - The Data Access Layer. All raw SQL queries live here.
-- **Schemas:** `src/schemas/` - Zod schemas defining the shape and constraints of your data.
-- **Middlewares:** `src/middlewares/` - Global cross-cutting concerns (Error handling, CORS, Logging).
-
-## 🛠️ Getting Started
-
-### 1. Install Dependencies
 ```bash
-bun install
-```
-
-### 2. Configure Database
-Ensure you have a PostgreSQL database running locally and accessible via the default environment variables, or update the connection string in `src/db/index.ts` if needed. By default, it connects to the `myfirstdb` database.
-
-### 3. Run the Development Server
-```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
 bun dev
 ```
-The server will start at `http://localhost:3000` and will automatically restart when you change code. The database tables will be initialized automatically.
 
-## 🧪 Testing
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Automated Tests
-Run the built-in Bun test suite to verify the CRUD operations:
-```bash
-bun test
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Manual Testing with Bruno
-This project includes a collection for [Bruno](https://www.usebruno.com/), an open-source API client.
-1. Open Bruno.
-2. Select **Open Collection** and point it to the `postgresql_test` directory in this project.
-3. You can use the included `Reset Database` request in the `seed` folder to wipe your DB and populate it with dummy data at any time.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 📦 Build for Production
+## Learn More
 
-Compile the project into a standalone JavaScript file:
-```bash
-bun run build
-```
+To learn more about Next.js, take a look at the following resources:
 
-Run the compiled production build:
-```bash
-bun run start
-```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 📖 API Endpoints
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 🎓 Students
-- `GET /students` - Retrieve all students
-- `GET /students/:id` - Retrieve a specific student
-- `POST /students` - Create a new student
-- `PUT /students/:id` - Update a student
-- `DELETE /students/:id` - Delete a student
+## Deploy on Vercel
 
-### 💸 Expenses
-- `GET /expenses` - Retrieve all expenses
-- `POST /expenses` - Create a new expense
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### ⚙️ System
-- `POST /seed` - Drops existing tables, recreates them, and seeds 5 dummy entries for both students and expenses.
-# postgresql
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
