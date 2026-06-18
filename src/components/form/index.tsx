@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
 import * as z from "zod";
@@ -25,21 +26,19 @@ import {
 import { Input } from "@/components/ui/input";
 
 export const formSchema = z.object({
-  title: z
-    .string()
-    .min(3, "Title must be at least 3 characters.")
-    .max(50, "Title must be at most 50 characters."),
-  image: z.string().url("Please enter a valid image URL."),
-  tags: z.array(z.string()).min(1, "Add at least one tag."),
+  title: z.string().min(3).max(50),
+  link: z.string().url(),
+  tags: z.array(z.string()).min(1),
 });
 
 const FormComponent = () => {
+  const router = useRouter();
   const [tagInput, setTagInput] = React.useState("");
 
   const form = useForm({
     defaultValues: {
       title: "",
-      image: "",
+      link: "",
       tags: [] as string[],
     },
     validators: {
@@ -49,7 +48,7 @@ const FormComponent = () => {
       try {
         const formData = new FormData();
         formData.append("title", value.title);
-        formData.append("image", value.image);
+        formData.append("link", value.link);
         value.tags.forEach((tag) => formData.append("tags", tag));
 
         const response = await fetch("/api/images", {
@@ -69,6 +68,10 @@ const FormComponent = () => {
           ),
           // position: "bottom-right",
         });
+
+        router.refresh();
+        form.reset();
+        setTagInput("");
       } catch (error) {
         toast("Submission Failed", {
           description: "There was an error submitting the form.",
@@ -128,7 +131,7 @@ const FormComponent = () => {
 
             {/* Image URL */}
             <form.Field
-              name="image"
+              name="link"
               children={(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid;
