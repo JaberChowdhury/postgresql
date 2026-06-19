@@ -1,5 +1,6 @@
 'use client';
 
+import { DateInput } from '@mantine/dates';
 import {
   Modal,
   Text,
@@ -31,6 +32,7 @@ const categoryData = [
 
 export function LogTransactionModal({ opened, onClose }: { opened: boolean; onClose: () => void }) {
   const [type, setType] = useState('Expense');
+  const [date, setDate] = useState<Date | null>(new Date());
 
   return (
     <Modal
@@ -65,11 +67,13 @@ export function LogTransactionModal({ opened, onClose }: { opened: boolean; onCl
           />
         </Grid.Col>
         <Grid.Col span={6}>
-          <Select
+          <DateInput
             label="Date"
-            placeholder="Today"
-            data={['Today', 'Yesterday', 'Custom (Date Picker here)']}
-            defaultValue="Today"
+            placeholder="Select date"
+            value={date}
+            onChange={setDate}
+            clearable
+            maxDate={new Date()}
           />
         </Grid.Col>
       </Grid>

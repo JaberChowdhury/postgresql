@@ -1,9 +1,9 @@
 'use client';
 
-import { AppShell, Burger, Group, Text, ActionIcon, Avatar, Box, Loader } from '@mantine/core';
+import { AppShell, Burger, Group, Text, ActionIcon, Avatar, Box } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useMantineColorScheme } from '@mantine/core';
-import { IconBell, IconSettings, IconSun, IconMoon } from '@tabler/icons-react';
+import { IconBell, IconSettings, IconSun, IconMoon, IconCoin } from '@tabler/icons-react';
 import { SidebarContent } from '@/components/Sidebar';
 import { SettingsModal } from '@/components/SettingsModal';
 import { AnimatedPage } from '@/components/Animations';
@@ -161,44 +161,66 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <AnimatePresence>
             {isLoading && (
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 44, opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                initial={{ height: 0, opacity: 0, scale: 0.95 }}
+                animate={{ height: 56, opacity: 1, scale: 1 }}
+                exit={{ height: 0, opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 style={{ overflow: 'hidden', marginBottom: 16 }}
               >
                 <Box
                   style={{
-                    height: 44,
-                    backgroundColor: 'var(--text-main)',
-                    borderRadius: 10,
+                    height: 56,
+                    backgroundColor: 'var(--bg-sidebar)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: 12,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: 12,
+                    gap: 14,
                     position: 'relative',
                   }}
                 >
                   <motion.div
-                    animate={{ backgroundPosition: ['200% 0', '-200% 0'] }}
-                    transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      borderRadius: 10,
-                      background:
-                        'linear-gradient(90deg, transparent 0%, rgba(128,128,128,0.25) 50%, transparent 100%)',
-                      backgroundSize: '200% 100%',
+                    animate={{ 
+                      rotateY: [0, 180, 360],
+                      y: [0, -6, 0]
                     }}
-                  />
-                  <Loader size="xs" color="var(--bg-main)" type="oval" />
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 1.2, 
+                      ease: "easeInOut" 
+                    }}
+                    style={{ 
+                      display: 'flex', 
+                      color: 'var(--text-main)', 
+                      perspective: 1000 
+                    }}
+                  >
+                    <IconCoin size={24} stroke={1.5} />
+                  </motion.div>
                   <Text
                     size="xs"
                     fw={700}
-                    style={{ color: 'var(--bg-main)', letterSpacing: '2px', zIndex: 1 }}
+                    style={{ color: 'var(--text-main)', letterSpacing: '2px', zIndex: 1 }}
                   >
-                    LOADING...
+                    SYNCING LEDGER...
                   </Text>
+
+                  {/* Elegant sweeping gradient effect */}
+                  <motion.div
+                    animate={{ x: ['-200%', '200%'] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '50%',
+                      height: '100%',
+                      background: 'linear-gradient(90deg, transparent, rgba(128,128,128,0.05), transparent)',
+                      transform: 'skewX(-20deg)',
+                      pointerEvents: 'none',
+                    }}
+                  />
                 </Box>
               </motion.div>
             )}

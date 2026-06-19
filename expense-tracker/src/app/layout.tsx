@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css';
 import '@mantine/charts/styles.css';
+import '@mantine/dates/styles.css';
 import { ColorSchemeScript } from '@mantine/core';
 import { ThemeSettingsProvider } from '@/components/ThemeSettingsProvider';
 import './globals.css';
